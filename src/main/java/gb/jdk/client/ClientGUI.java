@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ClientGUI extends JFrame {
 
@@ -19,15 +21,15 @@ public class ClientGUI extends JFrame {
     private final JTextField tfPort = new JTextField("8189");
     private final JTextField tfLogin= new JTextField("ilya_bunakov");
     private final JPasswordField tfPassword = new JPasswordField("19754825");
-    private final JButton btnLogin = new JButton("Login");
+    private final JButton btnLogin = new JButton("Войти");
 
     private final JPanel panelBottom = new JPanel(new BorderLayout());
     private final JTextField tfMessage = new JTextField();
-    private final JButton btnSend = new JButton("Send");
+    private final JButton btnSend = new JButton("Отправить");
 
     private String login;
 
-    private Chat serverWindow;
+    private final Chat serverWindow;
 
     public ClientGUI(Chat serverWindow){
         this.serverWindow = serverWindow;
@@ -64,7 +66,8 @@ public class ClientGUI extends JFrame {
             }
         });
 
-        btnSend.setToolTipText("Нажмите, чтобы отослать сообщение");
+        btnSend.setToolTipText("Нажмите, чтобы отправить сообщение");
+        btnSend.setEnabled(false);
 
         panelBottom.add(tfMessage, BorderLayout.CENTER);
         panelBottom.add(btnSend, BorderLayout.EAST);
@@ -111,7 +114,8 @@ public class ClientGUI extends JFrame {
             JOptionPane.showMessageDialog(this, "Сервер не доступен!");
         } else {
             if (!tfMessage.getText().equals("")) {
-                serverWindow.chat(String.format("%s: %s", login, tfMessage.getText()));
+                String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm:ss"));
+                serverWindow.chat(String.format("%s, %s: %s", today, login, tfMessage.getText()));
             }
         }
     }

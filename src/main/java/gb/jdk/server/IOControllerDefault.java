@@ -18,18 +18,11 @@ public class IOControllerDefault implements IOController{
                 output.write(line);
                 output.newLine();
             }
-
-//            while (list.size() > 0) {
-//                output.write(list.remove(0));
-//                output.newLine();
-//            }
         } catch (FileNotFoundException e) {
-            System.out.println("file not found");
+            System.out.println("Файл не найден!");
         } catch (IOException e) {
-            System.out.println("File access error");
+            System.out.println("Ошибка доступа к файлу!");
         }
-
-
     }
 
     /**
@@ -48,13 +41,10 @@ public class IOControllerDefault implements IOController{
                 list.add(str);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("file not found");
+            System.out.println("Файл не найден!");
         } catch (IOException e) {
-            System.out.println("File access error");
+            System.out.println("Ошибка доступа к файлу!");
         }
-
-
-
         return list;
     }
 }
