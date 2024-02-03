@@ -1,5 +1,7 @@
 package gb.jdk.client;
 
+import gb.jdk.server.Chat;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -22,6 +24,10 @@ public class ClientGUI extends JFrame {
     private final JPanel panelBottom = new JPanel(new BorderLayout());
     private final JTextField tfMessage = new JTextField();
     private final JButton btnSend = new JButton("Send");
+
+    private String login;
+
+    private Chat serverWindow;
 
     public ClientGUI(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
