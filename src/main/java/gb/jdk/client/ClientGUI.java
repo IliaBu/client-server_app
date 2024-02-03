@@ -29,12 +29,19 @@ public class ClientGUI extends JFrame {
 
     private Chat serverWindow;
 
-    public ClientGUI(){
+    public ClientGUI(Chat serverWindow){
+        this.serverWindow = serverWindow;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Чат клиента");
         setLocationRelativeTo(null);
         setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
         setSize(WIDTH, HEIGHT);
+
+        tfIPAdress.setToolTipText("Введите IP адрес");
+        tfPort.setToolTipText("Введите номер порта");
+        tfLogin.setToolTipText("Введите логин");
+        tfPassword.setToolTipText("Введите пароль");
+        btnLogin.setToolTipText("Нажмите, чтобы войти в учётную запись");
 
         panelTop.add(tfIPAdress);
         panelTop.add(tfPort);
@@ -46,16 +53,18 @@ public class ClientGUI extends JFrame {
         tfLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                logIn();
             }
         });
 
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                logIn();
             }
         });
+
+        btnSend.setToolTipText("Нажмите, чтобы отослать сообщение");
 
         panelBottom.add(tfMessage, BorderLayout.CENTER);
         panelBottom.add(btnSend, BorderLayout.EAST);
@@ -64,14 +73,14 @@ public class ClientGUI extends JFrame {
         tfMessage.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                sendMessage();
             }
         });
 
         btnSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                sendMessage();
             }
         });
 
@@ -80,6 +89,31 @@ public class ClientGUI extends JFrame {
         add(scrollLog);
 
         setVisible(true);
+    }
+
+    /**
+     * Авторизует пользователя
+     */
+    private void logIn() {
+        if (!tfLogin.getText().equals("")) {
+            login = tfLogin.getText();
+            this.setTitle(tfLogin.getText());
+            tfMessage.setEnabled(true);
+            btnSend.setEnabled(true);
+        }
+    }
+
+    /**
+     * Отправляет сообщение
+     */
+    private void sendMessage() {
+        if (!serverWindow.isAvailable()) {
+            JOptionPane.showMessageDialog(this, "Сервер не доступен!");
+        } else {
+            if (!tfMessage.getText().equals("")) {
+                serverWindow.chat(String.format("%s: %s", login, tfMessage.getText()));
+            }
+        }
     }
 
 }
