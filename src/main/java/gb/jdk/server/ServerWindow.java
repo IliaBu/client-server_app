@@ -13,6 +13,7 @@ public class ServerWindow extends JFrame implements Chat{
     private static final int WIDTH = 300;
     private static final int HEIGHT = 350;
 
+    private ImageIcon img;
     private JButton btnStart;
     private JButton btnStop;
     private JTextArea taMessages;
@@ -28,6 +29,8 @@ public class ServerWindow extends JFrame implements Chat{
         btnStart = new JButton("Запустить");
         btnStop = new JButton("Остановить");
         setTitle("Чат сервера");
+        img = new ImageIcon(getClass().getResource("/chat.png"));
+        setIconImage(img.getImage());
         setLocationRelativeTo(null);
         setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
         setSize(WIDTH, HEIGHT);

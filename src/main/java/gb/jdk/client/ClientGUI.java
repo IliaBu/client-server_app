@@ -13,7 +13,7 @@ public class ClientGUI extends JFrame {
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 350;
-
+    private ImageIcon img;
     private final JTextArea log = new JTextArea();
 
     private final JPanel panelTop = new JPanel(new GridLayout(2,3));
@@ -35,6 +35,8 @@ public class ClientGUI extends JFrame {
         this.serverWindow = serverWindow;
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Чат клиента");
+        img = new ImageIcon(getClass().getResource("/chat.png"));
+        setIconImage(img.getImage());
         setLocationRelativeTo(null);
         setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
         setSize(WIDTH, HEIGHT);

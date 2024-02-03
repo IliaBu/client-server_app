@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aa52503-59f8-4170-b070-7fc61f9f4251" name="Changes" comment="added a send button handler and a message sending function">
+    <list default="true" id="3aa52503-59f8-4170-b070-7fc61f9f4251" name="Changes" comment="Add icon app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/client/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/client/ClientGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/server/IOControllerDefault.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/server/IOControllerDefault.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/server/ServerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/server/ServerWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +44,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "S:/Java/client-server_app/src/main/java/gb/jdk/server"
+    "last_opened_file_path": "S:/Java/client-server_app/src/main/java/gb/jdk/server",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -105,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1706991073894</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add code">
+      <created>1706993444051</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1706993444051</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +146,8 @@
     <MESSAGE value="Create project" />
     <MESSAGE value="added an interface for chat and controller" />
     <MESSAGE value="added a send button handler and a message sending function" />
-    <option name="LAST_COMMIT_MESSAGE" value="added a send button handler and a message sending function" />
+    <MESSAGE value="Add code" />
+    <MESSAGE value="Add icon app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add icon app" />
   </component>
 </project>
