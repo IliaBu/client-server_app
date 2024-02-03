@@ -38,7 +38,7 @@ public class ClientGUI extends JFrame {
         img = new ImageIcon(getClass().getResource("/chat.png"));
         setIconImage(img.getImage());
         setLocationRelativeTo(null);
-        setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
+        setLocation(getX() - WIDTH / 10, getY() - HEIGHT / 10);
         setSize(WIDTH, HEIGHT);
 
         tfIPAdress.setToolTipText("Введите IP адрес");
