@@ -14,12 +14,12 @@ public class ServerWindow extends JFrame implements Chat{
     private ImageIcon img;
     private JButton btnStart;
     private JButton btnStop;
-    private JTextArea taMessages;
+    private final JTextArea taMessages;
     boolean isServerWorking;
 
     private List<String> messages;
-    private File logFile;
-    private IOController ioController;
+    private final File logFile;
+    private final IOController ioController;
 
     public ServerWindow() {
         setting();
