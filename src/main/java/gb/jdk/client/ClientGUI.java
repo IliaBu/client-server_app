@@ -4,8 +4,6 @@ import gb.jdk.server.Chat;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -33,6 +31,34 @@ public class ClientGUI extends JFrame {
 
     public ClientGUI(Chat serverWindow){
         this.serverWindow = serverWindow;
+        setting();
+
+        panelTop.add(tfIPAdress);
+        panelTop.add(tfPort);
+        panelTop.add(new JPanel());
+        panelTop.add(tfLogin);
+        panelTop.add(tfPassword);
+        panelTop.add(btnLogin);
+        add(panelTop, BorderLayout.NORTH);
+
+        tfLogin.addActionListener(e -> logIn());
+        btnLogin.addActionListener(e -> logIn());
+
+        panelBottom.add(tfMessage, BorderLayout.CENTER);
+        panelBottom.add(btnSend, BorderLayout.EAST);
+        add(panelBottom, BorderLayout.SOUTH);
+
+        tfMessage.addActionListener(e -> sendMessage());
+        btnSend.addActionListener(e -> sendMessage());
+
+        log.setEditable(false);
+        JScrollPane scrollLog = new JScrollPane(log);
+        add(scrollLog);
+
+        setVisible(true);
+    }
+
+    private void setting() {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("Чат клиента");
         img = new ImageIcon(getClass().getResource("/chat.png"));
@@ -46,61 +72,15 @@ public class ClientGUI extends JFrame {
         tfLogin.setToolTipText("Введите логин");
         tfPassword.setToolTipText("Введите пароль");
         btnLogin.setToolTipText("Нажмите, чтобы войти в учётную запись");
-
-        panelTop.add(tfIPAdress);
-        panelTop.add(tfPort);
-        panelTop.add(tfLogin);
-        panelTop.add(tfPassword);
-        panelTop.add(btnLogin);
-        add(panelTop, BorderLayout.NORTH);
-
-        tfLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                logIn();
-            }
-        });
-
-        btnLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                logIn();
-            }
-        });
-
         btnSend.setToolTipText("Нажмите, чтобы отправить сообщение");
         btnSend.setEnabled(false);
-
-        panelBottom.add(tfMessage, BorderLayout.CENTER);
-        panelBottom.add(btnSend, BorderLayout.EAST);
-        add(panelBottom, BorderLayout.SOUTH);
-
-        tfMessage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMessage();
-            }
-        });
-
-        btnSend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMessage();
-            }
-        });
-
-        log.setEditable(false);
-        JScrollPane scrollLog = new JScrollPane(log);
-        add(scrollLog);
-
-        setVisible(true);
     }
 
     /**
      * Авторизует пользователя
      */
     private void logIn() {
-        if (!tfLogin.getText().equals("")) {
+        if (!tfLogin.getText().isEmpty()) {
             login = tfLogin.getText();
             this.setTitle(tfLogin.getText());
             tfMessage.setEnabled(true);
@@ -115,7 +95,7 @@ public class ClientGUI extends JFrame {
         if (!serverWindow.isAvailable()) {
             JOptionPane.showMessageDialog(this, "Сервер не доступен!");
         } else {
-            if (!tfMessage.getText().equals("")) {
+            if (!tfMessage.getText().isEmpty()) {
                 String today = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy hh:mm:ss"));
                 serverWindow.chat(String.format("%s, %s: %s", today, login, tfMessage.getText()));
             }

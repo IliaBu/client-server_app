@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3aa52503-59f8-4170-b070-7fc61f9f4251" name="Changes" comment="Add icon app">
+    <list default="true" id="3aa52503-59f8-4170-b070-7fc61f9f4251" name="Changes" comment="The values of the positions of the client's chat window have been changed">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/client/ClientGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/client/ClientGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gb/jdk/server/ServerWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gb/jdk/server/ServerWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="first" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,6 +34,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
   <component name="ProjectId" id="2brsp92jhbejATQqYrGCoroTS2u" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -42,17 +49,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "S:/Java/client-server_app/src/main/java/gb/jdk/server",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/ilya/GeekBrains/02 - Разработчик — Веб-разработка на Java. Технологическая специализация/02 Java Development Kit. Практикум/02/jdk_server_lesson2-master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="S:\Java\client-server_app\src\main\java\gb\jdk\server" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gb.jdk.Main" />
@@ -70,8 +77,16 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-liberica-17.0.10-4caba194b151-224932df" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,6 +97,10 @@
       <option name="presentableId" value="Default" />
       <updated>1706984715124</updated>
       <workItem from="1706984717007" duration="1875000" />
+      <workItem from="1706995956908" duration="28000" />
+      <workItem from="1707325310512" duration="1386000" />
+      <workItem from="1707329544891" duration="1626000" />
+      <workItem from="1707566354105" duration="901000" />
     </task>
     <task id="LOCAL-00001" summary="Create project">
       <created>1706984884342</created>
@@ -90,42 +109,7 @@
       <option name="project" value="LOCAL" />
       <updated>1706984884342</updated>
     </task>
-    <task id="LOCAL-00002" summary="added an interface for chat and controller">
-      <created>1706990516648</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1706990516648</updated>
-    </task>
-    <task id="LOCAL-00003" summary="added a send button handler and a message sending function">
-      <created>1706991073894</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1706991073894</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Add code">
-      <created>1706993444051</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1706993444051</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Add icon app">
-      <created>1706994350105</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1706994350105</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Add icon app">
-      <created>1706994403133</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1706994403133</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,10 +140,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create project" />
-    <MESSAGE value="added an interface for chat and controller" />
-    <MESSAGE value="added a send button handler and a message sending function" />
-    <MESSAGE value="Add code" />
-    <MESSAGE value="Add icon app" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add icon app" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create project" />
   </component>
 </project>

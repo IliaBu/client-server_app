@@ -2,8 +2,6 @@ package gb.jdk.server;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,35 +22,15 @@ public class ServerWindow extends JFrame implements Chat{
     private IOController ioController;
 
     public ServerWindow() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-        btnStart = new JButton("Запустить");
-        btnStop = new JButton("Остановить");
-        setTitle("Чат сервера");
-        img = new ImageIcon(getClass().getResource("/chat.png"));
-        setIconImage(img.getImage());
-        setLocationRelativeTo(null);
-        setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
-        setSize(WIDTH, HEIGHT);
+        setting();
         isServerWorking = false;
         messages = new ArrayList<>();
         taMessages = new JTextArea();
         logFile = new File("./log.txt");
         ioController = new IOControllerDefault();
 
-        btnStart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                startServer();
-            }
-        });
-
-        btnStop.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                stopServer();
-            }
-        });
+        btnStart.addActionListener(e -> startServer());
+        btnStop.addActionListener(e -> stopServer());
 
         JPanel panBottom = new JPanel(new GridLayout(1, 2));
         panBottom.add(btnStart);
@@ -62,6 +40,18 @@ public class ServerWindow extends JFrame implements Chat{
         JScrollPane scrollPane = new JScrollPane(taMessages);
         add(scrollPane, BorderLayout.CENTER);
         setVisible(true);
+    }
+
+    private void setting() {
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        btnStart = new JButton("Запустить");
+        btnStop = new JButton("Остановить");
+        setTitle("Чат сервера");
+        img = new ImageIcon(getClass().getResource("/chat.png"));
+        setIconImage(img.getImage());
+        setLocationRelativeTo(null);
+        setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
+        setSize(WIDTH, HEIGHT);
     }
 
     /**
