@@ -1,0 +1,152 @@
+Index: src/main/java/gb/jdk/server/ServerWindow.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gb.jdk.server;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class ServerWindow extends JFrame {\r\n\r\n    private static final int WIDTH = 300;\r\n    private static final int HEIGHT = 350;\r\n\r\n    private JButton btnStart;\r\n    private JButton btnStop;\r\n\r\n    boolean isServerWorking;\r\n\r\n    public ServerWindow() {\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n\r\n        btnStart = new JButton(\"Start\");\r\n        btnStop = new JButton(\"Stop\");\r\n        setTitle(\"Чат сервера\");\r\n        setLocationRelativeTo(null);\r\n        setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);\r\n        setSize(WIDTH, HEIGHT);\r\n\r\n        btnStart.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                isServerWorking = true;\r\n                System.out.println(\"Сервер запущен!\");\r\n            }\r\n        });\r\n\r\n        btnStop.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                isServerWorking = false;\r\n                System.out.println(\"Сервер остановлен!\");\r\n            }\r\n        });\r\n        JPanel panBottom = new JPanel(new GridLayout(1, 2));\r\n        panBottom.add(btnStart);\r\n        panBottom.add(btnStop);\r\n        add(panBottom, BorderLayout.SOUTH);\r\n\r\n        setVisible(true);\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/gb/jdk/server/ServerWindow.java b/src/main/java/gb/jdk/server/ServerWindow.java
+--- a/src/main/java/gb/jdk/server/ServerWindow.java	
++++ b/src/main/java/gb/jdk/server/ServerWindow.java	
+@@ -4,6 +4,9 @@
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+ import java.awt.event.ActionListener;
++import java.io.File;
++import java.util.ArrayList;
++import java.util.List;
+ 
+ public class ServerWindow extends JFrame {
+ 
+@@ -12,8 +15,12 @@
+ 
+     private JButton btnStart;
+     private JButton btnStop;
++    private JTextArea taMessages;
++    private boolean isServerWorking;
+ 
+-    boolean isServerWorking;
++    private List<String> messages;
++    private File logFile;
++    private IOController ioController;
+ 
+     public ServerWindow() {
+         setDefaultCloseOperation(EXIT_ON_CLOSE);
+@@ -25,6 +32,12 @@
+         setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
+         setSize(WIDTH, HEIGHT);
+ 
++        isServerWorking = false;
++        messages = new ArrayList<>();
++        taMessages = new JTextArea();
++        logFile = new File("./log.txt");
++        ioController = new IOControllerDefault();
++
+         btnStart.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+Index: src/main/java/gb/jdk/client/ClientGUI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package gb.jdk.client;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class ClientGUI extends JFrame {\r\n\r\n    private static final int WIDTH = 300;\r\n    private static final int HEIGHT = 350;\r\n\r\n    private final JTextArea log = new JTextArea();\r\n\r\n    private final JPanel panelTop = new JPanel(new GridLayout(2,3));\r\n    private final JTextField tfIPAdress = new JTextField(\"127.0.0.1\");\r\n    private final JTextField tfPort = new JTextField(\"8189\");\r\n    private final JTextField tfLogin= new JTextField(\"ilya_bunakov\");\r\n    private final JPasswordField tfPassword = new JPasswordField(\"19754825\");\r\n    private final JButton btnLogin = new JButton(\"Login\");\r\n\r\n    private final JPanel panelBottom = new JPanel(new BorderLayout());\r\n    private final JTextField tfMessage = new JTextField();\r\n    private final JButton btnSend = new JButton(\"Send\");\r\n\r\n    public ClientGUI(){\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n        setTitle(\"Чат клиента\");\r\n        setLocationRelativeTo(null);\r\n        setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);\r\n        setSize(WIDTH, HEIGHT);\r\n\r\n        panelTop.add(tfIPAdress);\r\n        panelTop.add(tfPort);\r\n        panelTop.add(tfLogin);\r\n        panelTop.add(tfPassword);\r\n        panelTop.add(btnLogin);\r\n        add(panelTop, BorderLayout.NORTH);\r\n\r\n        tfLogin.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        btnLogin.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        panelBottom.add(tfMessage, BorderLayout.CENTER);\r\n        panelBottom.add(btnSend, BorderLayout.EAST);\r\n        add(panelBottom, BorderLayout.SOUTH);\r\n\r\n        tfMessage.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        btnSend.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n\r\n            }\r\n        });\r\n\r\n        log.setEditable(false);\r\n        JScrollPane scrollLog = new JScrollPane(log);\r\n        add(scrollLog);\r\n\r\n        setVisible(true);\r\n    }\r\n\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/gb/jdk/client/ClientGUI.java b/src/main/java/gb/jdk/client/ClientGUI.java
+--- a/src/main/java/gb/jdk/client/ClientGUI.java	
++++ b/src/main/java/gb/jdk/client/ClientGUI.java	
+@@ -1,5 +1,7 @@
+ package gb.jdk.client;
+ 
++import gb.jdk.server.Chat;
++
+ import javax.swing.*;
+ import java.awt.*;
+ import java.awt.event.ActionEvent;
+@@ -23,6 +25,9 @@
+     private final JTextField tfMessage = new JTextField();
+     private final JButton btnSend = new JButton("Send");
+ 
++    private Chat serverWindow;
++    private String login;
++
+     public ClientGUI(){
+         setDefaultCloseOperation(EXIT_ON_CLOSE);
+         setTitle("Чат клиента");
+@@ -30,6 +35,12 @@
+         setLocation(getX() - WIDTH / 2, getY() - HEIGHT / 2);
+         setSize(WIDTH, HEIGHT);
+ 
++        tfIPAdress.setToolTipText("Введите IP адрес");
++        tfPort.setToolTipText("Введите номер порта");
++        tfLogin.setToolTipText("Введите логин");
++        tfPassword.setToolTipText("Введите пароль");
++        btnLogin.setToolTipText("Введите имя");
++
+         panelTop.add(tfIPAdress);
+         panelTop.add(tfPort);
+         panelTop.add(tfLogin);
+@@ -40,16 +51,19 @@
+         tfLogin.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-
++                logIn();
+             }
+         });
+ 
+         btnLogin.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-
++                logIn();
+             }
+         });
++
++        btnSend.setToolTipText("Нажмите, чтобы отправить сообщение");
++        btnSend.setEnabled(false);
+ 
+         panelBottom.add(tfMessage, BorderLayout.CENTER);
+         panelBottom.add(btnSend, BorderLayout.EAST);
+@@ -58,14 +72,14 @@
+         tfMessage.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-
++                sendMessage();
+             }
+         });
+ 
+         btnSend.addActionListener(new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+-
++                sendMessage();
+             }
+         });
+ 
+@@ -76,4 +90,28 @@
+         setVisible(true);
+     }
+ 
++    /**
++     * Авторизует пользователя
++     */
++    private void logIn() {
++        if (!tfLogin.getText().equals("")) {
++            login = tfLogin.getText();
++            this.setTitle(tfLogin.getText());
++            tfMessage.setEnabled(true);
++            btnSend.setEnabled(true);
++        }
++    }
++
++    /**
++     * Отправляет сообщение
++     */
++    private void sendMessage() {
++        if (!serverWindow.isAvailable()) {
++            JOptionPane.showMessageDialog(this, "Сервер не доступен!");
++        } else {
++            if (!tfMessage.getText().equals("")) {
++                serverWindow.chat(String.format("%s: %s", login, tfMessage.getText()));
++            }
++        }
++    }
+ }
