@@ -7,7 +7,7 @@ import java.awt.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ClientGUI extends JFrame {
+public class ClientGUI extends JFrame implements View{
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 350;
@@ -79,7 +79,8 @@ public class ClientGUI extends JFrame {
     /**
      * Авторизует пользователя
      */
-    private void logIn() {
+    @Override
+    public void logIn() {
         if (!tfLogin.getText().isEmpty()) {
             login = tfLogin.getText();
             this.setTitle(tfLogin.getText());
@@ -91,7 +92,8 @@ public class ClientGUI extends JFrame {
     /**
      * Отправляет сообщение
      */
-    private void sendMessage() {
+    @Override
+    public void sendMessage() {
         if (!serverWindow.isAvailable()) {
             JOptionPane.showMessageDialog(this, "Сервер не доступен!");
         } else {

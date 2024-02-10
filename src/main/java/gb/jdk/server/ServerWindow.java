@@ -84,7 +84,6 @@ public class ServerWindow extends JFrame implements Chat{
         this.isServerWorking = true;
         this.setTitle("Сервер запущен");
         if (logFile.exists()) loadMessages();
-
     }
 
     /**
@@ -93,13 +92,13 @@ public class ServerWindow extends JFrame implements Chat{
     private void stopServer() {
         this.isServerWorking = false;
         this.setTitle("Сервер остановлен");
-
     }
 
     /**
      * Обновляет чат
      */
     private void loadMessages() {
+        taMessages.setText("");
         messages = ioController.readFile(logFile);
         for (String message : messages) {
             taMessages.append(message);
